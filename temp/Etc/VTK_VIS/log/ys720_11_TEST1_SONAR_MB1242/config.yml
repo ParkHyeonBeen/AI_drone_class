@@ -1,0 +1,41 @@
+# Drone configuration (-> source/drone_px4.py -> PX4)
+system_address: "serial:///dev/ttyTHS0:115200"  # px4 connection address
+depth_cam: On                  # [On, Off]
+sonar: On                      # [On, Off]
+
+# ZED2 camera configuration (-> source/drone_px4.py -> PX4)
+depth_mode: "QUALITY"          # [QUALITY, ULTRA, PERFORMANCE]
+cam_resolution: "HD720"        # [HD720, HD1080, VGA]
+sensing_mode: "STANDARD"       # [STANDARD, FILL]
+depth_min_dist: 0.3            # depth minimum distance
+cam_fps: 30                    # frames per second
+texture_conf: 100               # ZED2 Testure confidence threshold (0~100)
+
+# Policy test configuration (-> source/environment.py -> Navigation)
+sensing_test: Off              # [On, Off]
+
+control_mode: "VNYZ"           # [PNY-PositionNedYaw, VNYZ-VelocityNedYawZasync]
+action_lpf: On                 # [On, Off]
+lpf_alpha: 0.5                 # scale
+dist_tolerence: 3.             # (m)
+
+velocity_max: 1.5              # (m/s)
+velocity_min: 0.5             # (m/s)
+angle_max: 45.                 # (degree)
+dz_max: 1.                     # (m)
+
+initial_altitude: 2.5          # (m)
+max_altitude: 10.              # (m)
+min_altitude: 1.5              # (m)
+
+sim_init_altitude: 27.         # (m)
+sim_max_altitude: 45.          # (m)
+sim_min_altitude: 10.           # (m)
+
+action_dim: 3                  # 2 for 2D navigation, 3 for 3D navigation
+n_history: 3                   # the number of history information for state composition
+
+depth_dim: [72, 128]           # depth image size (e.g., [84,112])
+depth_scale_max: 20            # (m)
+depth_max: 20                  # (m)
+depth_min: 1                   # (m)
